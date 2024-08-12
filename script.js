@@ -21,6 +21,7 @@ if (close) {
 // Fetch products from API and display them
 const productsContainer = document.getElementById('products-container');
 
+//using fakestoreapi.com/products to get data into the featured product section
 fetch('https://fakestoreapi.com/products')
   .then((response) => response.json())
   .then((products) => {
@@ -53,95 +54,32 @@ fetch('https://fakestoreapi.com/products')
   })
   .catch((error) => console.error('Error fetching products:', error));
 
-// fetch('https://api.escuelajs.co/api/v1/products')
-//   .then((response) => response.json())
-//   .then((products) => {
-//     console.log('title:', products[0].title);
-//     console.log('images:', products[0].images[0]);
-//     console.log(products);
-//     products.forEach((product, i) => {
-//       console.log(typeof product.images[0], ':', product.images[0], i);
-//       const productDiv = document.createElement('div');
-//       productDiv.classList.add('pro');
+// implementing the add to cart functionality
 
-//       productDiv.innerHTML = `
-//         <img src="${product.images[0]}" alt="${product.name}">
-//         <div class="des">
-//           <span>${product.brand}</span>
-//           <h5>${product.name}</h5>
-//           <div class="star">
-//             ${'★'.repeat(product.rating)}${'☆'.repeat(5 - product.rating)}
-//           </div>
-//           <h4>$${product.price}</h4>
-//         </div>
-//         <a href="#" class="cart" data-id="${
-//           product.id
-//         }"><i class="fa-solid fa-cart-shopping"></i></a>
-//       `;
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-//       productsContainer.appendChild(productDiv);
-//     });
-//   })
-//   .catch((error) => console.error('Error fetching products:', error));
+// Function to update Local Storage
+function updateLocalStorage() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
 
-// fetch('https://jsonplaceholder.typicode.com/users').then((res) => {
-//   return res.json().then((data) => {
-//     data.forEach((user) => {
-//       const markup = `<li>${user.name}</li>`;
+// Event delegation for Add to Cart buttons
+productsContainer.addEventListener('click', (e) => {
+  if (e.target.closest('.cart')) {
+    e.preventDefault();
+    const productId = e.target.closest('.cart').getAttribute('data-id');
+    addToCart(productId);
+  }
+});
 
-//       document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
-//     });
-//     console.log(data);
-//   });
-// });
-
-// fetch('https://api.escuelajs.co/api/v1/products').then((res) => {
-//   return res.json().then((data) => {
-//     data.forEach((user) => {
-//       const markup = `<li>${user.name}</li>`;
-
-//       document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
-//     });
-//     console.log(data[0]);
-//   });
-// });
-
-// fetch('https://fakestoreapi.com/products/1').then((res) => {
-//   return res.json().then((data) => {
-//     data.forEach((user) => {
-//       const markup = `<li>${user.name}</li>`;
-
-//       document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
-//     });
-//     console.log(data);
-//   });
-// });
-
-// fetch('https://api.escuelajs.co/api/v1/products').then((res) => {
-//   return res.json().then((data) => {
-//     console.log(data);
-//   });
-// });
-// fetch('https://fakestoreapi.com/products/1').then((res) => {
-//   return res.json().then((data) => {
-//     console.log(data);
-//   });
-// });
-
-// `<div class="pro-container">
-//         <div class="pro">
-//           <img src="img/products/f1.jpg" alt="" />
-//           <div class="des">
-//             <span>addidas</span>
-//             <h5>Cartoon Astronaut T-Shirts</h5>
-//             <div class="star">
-//               <i class="fas fa-star"></i>
-//               <i class="fas fa-star"></i>
-//               <i class="fas fa-star"></i>
-//               <i class="fas fa-star"></i>
-//               <i class="fas fa-star"></i>
-//             </div>
-//             <h4>$78</h4>
-//           </div>
-//           <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-//         </div>`;
+function addToCart(productId) {
+  // Check if product already in cart
+  const existingProduct = cart.find((item) => item.id === productId);
+  if (existingProduct) {
+    existingProduct.quantity += 1;
+  } else {
+    cart.push({ id: productId, quantity: 1 });
+  }
+  updateLocalStorage();
+  alert('Product added to cart!');
+}

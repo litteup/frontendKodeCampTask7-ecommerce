@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <!--  Nav Bar -->
+    <section id="header">
+      <a href="#"><img src="../img/logo.png" alt="" class="logo" /></a>
+      <div>
+        <ul id="navbar">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./shop.html">Shop</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a " href="./add-to-cart.html">Add to Cart</a></li>
+          <li><a class="active" href="./checkout.html">Checkout</a></li>
+          <li>
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+          </li>
+          <li id="lg-bag">
+            <a href="cart.html"> <i class="fa-solid fa-bag-shopping"></i> </a>
+          </li>
+          <a href="#" id="close"><i class="fa-solid fa-x"></i></a>
+        </ul>
+      </div>
+      <div id="mobile">
+        <a href="cart.html"> <i class="fa-solid fa-bag-shopping"></i> </a>
+        <i id="bar" class="fa-solid fa-bars"></i>
+      </div>
+    </section>
+    <!-- Checkout Page -->
+    <section id="checkout" class="section-p1">
+      <h2>Checkout</h2>
+      <div class="checkout-form">
+        <form action="">
+          <h3>Billing Information</h3>
+          <input type="text" placeholder="Full Name" />
+          <input type="text" placeholder="Address" />
+          <input type="text" placeholder="Email" />
+          <input type="text" placeholder="Phone Number" />
+
+          <h3>Shipping Information</h3>
+          <input type="text" placeholder="Address (if different)" />
+          <!--  <input type="text" placeholder="Address" required /> -->
+          <!-- Add more shipping fields as needed -->
+
+          <h3>Payment Information</h3>
+          <input type="text" placeholder="Card Number" />
+          <input type="text" placeholder="Expiry Date" />
+          <input type="text" placeholder="CVV" />
+
+          <h3>Order Summary</h3>
+          <div class="order-summary">
+            <!-- Order summary will be dynamically updated -->
+            <p>Men's Fashion T T-Shirts - $139.00</p>
+            <p>Total: $139.00</p>
+          </div>
+
+          <button class="normal" type="submit">Place Order</button>
+        </form>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="section-p1">
+      <div class="col">
+        <img class="logo" src="img/logo.png" alt="" />
+        <h4>Contact</h4>
+        <p><strong>Address: </strong> 123 KodeCamp Roda, Street 44, Lagos</p>
+        <p><strong>Phone: </strong> +234 1 223 333 56</p>
+        <p><strong>Hours: </strong> 1000 - 1700, Monday - Friday</p>
+
+        <div class="follow">
+          <h4>Follow us</h4>
+          <div class="icon">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-x-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-telegram"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-pinterest"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <div class="col">
+        <h4>About</h4>
+        <a href="#">Account</a>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">My Wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+      </div>
+
+      <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Store or Google Play</p>
+
+        <div class="row">
+          <img src="img/pay/app.jpg" alt="App Store" />
+          <img src="img/pay/play.jpg" alt="Google Play Store" />
+        </div>
+        <p>Secured Payment Gateway</p>
+        <img src="img/pay/pay.png" alt="Payment Sources" />
+      </div>
+
+      <div class="copyright">
+        <p>© 2024, KodeCamp4-0 Frontend Development</p>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+</html>
